@@ -4,18 +4,19 @@ const criaJogo = sprite => {
     let lacunas = [];
     let etapa = 1;
 
-    const ganhou = function() {
+    const ganhou = () => {
         return lacunas.length
             ? !lacunas.some(function(lacuna) {
             return lacuna == '';
-            }) : false;
+            }) 
+            : false;
     }
 
     const perdeu = () => sprite.isFinished();
 
     const ganhouOuPerdeu = () => ganhou() || perdeu();
 
-    const reinicia = function() {
+    const reinicia = () => {
         etapa = 1;
         lacunas = [];
         palavraSecreta = '';
@@ -40,7 +41,7 @@ const criaJogo = sprite => {
     
     const criaLacunas = () => {
 
-        for (let i = 0; palavraSecreta.length; i++) {
+        for (let i = 0; i < palavraSecreta.length; i++) {
             lacunas.push('');
         }
 
@@ -49,6 +50,8 @@ const criaJogo = sprite => {
     const proximaEtapa = () => etapa = 2;
 
     const setPalavraSecreta = (palavra) => {
+
+        if (!palavra.trim()) throw Error('Palavra secreta inválida');
         
         palavraSecreta = palavra;
         criaLacunas();
@@ -70,5 +73,3 @@ const criaJogo = sprite => {
         reinicia,
     };
 };
-
-var jogo = criaJogo(createSprite('.sprite'));

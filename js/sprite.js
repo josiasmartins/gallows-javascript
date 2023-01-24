@@ -32,6 +32,8 @@ const createSprite = seletor => {
 
     const isFinished = () => !hasNext();
 
+    $el.addClass(frames[current]);
+
     return {
         nextFrame: nextFrame,
         reset: reset,
@@ -39,6 +41,3 @@ const createSprite = seletor => {
     }
 
 }
-
-// const sprite = createSprite('.sprite');
-// sprite.nextFrame();

@@ -7,7 +7,8 @@ const criaController = jogo => {
     // consulta jogo.getLacunas() e exibe para o usuário cada lacuna 
 
     const exibeLacunas = () => {
-        $entrada.empty();
+
+        $lacunas.empty();
         jogo.getLacunas().forEach(function(lacuna) {
             $('<li>')
                 .addClass('lacuna')
@@ -26,7 +27,7 @@ const criaController = jogo => {
 
         try {
             jogo.setPalavraSecreta($entrada.val().trim());
-            entrada.val('');
+            $entrada.val('');
             mudaPlaceHolder('chuta');
             exibeLacunas();$
         } catch (err) {
