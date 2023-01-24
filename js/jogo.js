@@ -29,6 +29,8 @@ var criaJogo = function(sprite) {
 
     var processaChute = function(chute) {
 
+        if (!chute.trim()) throw Error('Chute inválido');
+
         var exp = new RegExp(chute, 'gi'),
             resultado,
             acertou = false;
